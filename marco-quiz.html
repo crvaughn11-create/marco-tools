@@ -1017,26 +1017,26 @@
   // This sends all quiz data to a Zapier Webhook trigger.
   // In Zapier, build a 3-step Zap:
   //
-  //   1. TRIGGER: "Webhooks by Zapier" â "Catch Hook"
+  //   1. TRIGGER: "Webhooks by Zapier" → "Catch Hook"
   //      - Zapier gives you a URL like: https://hooks.zapier.com/hooks/catch/XXXXX/YYYYY/
   //      - Paste that URL below as ZAPIER_WEBHOOK_URL
   //
-  //   2. ACTION 1: "Google Sheets" â "Create Spreadsheet Row"
+  //   2. ACTION 1: "Google Sheets" → "Create Spreadsheet Row"
   //      - Connect your Google account
   //      - Pick your tracking spreadsheet
   //      - Map each field: firstName, lastName, email, role, bandwidth,
   //        timeDrain, roles, hireCount, revenue, frustration, timeline,
   //        website, leadType, submittedAt, utm_source, utm_medium, etc.
   //
-  //   3. ACTION 2: "Attio" â "Create a Person" (or "Find or Create")
-  //      - Map: email â Email, firstName â First Name, lastName â Last Name
+  //   3. ACTION 2: "Attio" → "Create a Person" (or "Find or Create")
+  //      - Map: email → Email, firstName → First Name, lastName → Last Name
   //      - Add website, role, leadType as custom attributes
-  //      - Then add a follow-up step: "Attio" â "Create a Task" or use
+  //      - Then add a follow-up step: "Attio" → "Create a Task" or use
   //        Attio's native automation to trigger an email sequence when
   //        a new Person is created with a specific attribute (leadType)
   //
   // Alternatively, use Attio's built-in automations:
-  //   - In Attio â Automations â "When a person is created"
+  //   - In Attio → Automations → "When a person is created"
   //   - Filter by leadType attribute
   //   - Trigger email sequence for hot vs warm leads
   //
