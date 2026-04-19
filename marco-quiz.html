@@ -587,13 +587,13 @@
   <!-- ==================== PAGE 3: TIME DRAIN ==================== -->
   <div class="page" data-page="3">
     <div class="page-title">What's eating up most of your time right now?</div>
-    <div style="height:20px"></div>
-    <div class="option-list" data-question="timeDrain" data-type="radio">
-      <div class="option-item" data-value="Recruiting and interviewing"><div class="option-badge">A</div><span>Recruiting and interviewing</span></div>
-      <div class="option-item" data-value="Managing day-to-day operations"><div class="option-badge">B</div><span>Managing day-to-day operations</span></div>
-      <div class="option-item" data-value="Tasks I know I should be delegating"><div class="option-badge">C</div><span>Tasks I know I should be delegating</span></div>
-      <div class="option-item" data-value="Wearing too many hats"><div class="option-badge">D</div><span>Wearing too many hats</span></div>
-      <div class="option-item" data-value="Revenue-generating work (the good kind)"><div class="option-badge">E</div><span>Revenue-generating work (the good kind)</span></div>
+    <p class="page-subtitle">Select all that apply.</p>
+    <div class="option-list" data-question="timeDrain" data-type="checkbox">
+      <div class="checkbox-item" data-value="Recruiting and interviewing"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Recruiting and interviewing</span></div>
+      <div class="checkbox-item" data-value="Managing day-to-day operations"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Managing day-to-day operations</span></div>
+      <div class="checkbox-item" data-value="Tasks I know I should be delegating"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Tasks I know I should be delegating</span></div>
+      <div class="checkbox-item" data-value="Wearing too many hats"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Wearing too many hats</span></div>
+      <div class="checkbox-item" data-value="Revenue-generating work (the good kind)"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Revenue-generating work (the good kind)</span></div>
     </div>
 
     <div class="insight-card">
@@ -606,6 +606,10 @@
       </div>
       <div class="insight-text">Founders spend an average of <b>12 hours per week</b> on tasks a qualified hire could handle.</div>
     </div>
+
+    <button class="btn-primary hidden" onclick="nextPage()">
+      Continue <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+    </button>
   </div>
 
   <!-- ==================== PAGE 4: ROLES (CHECKBOXES) ==================== -->
@@ -692,14 +696,14 @@
   <!-- ==================== PAGE 7: HIRING FRUSTRATION ==================== -->
   <div class="page" data-page="7">
     <div class="page-title">What's been your biggest hiring frustration?</div>
-    <div style="height:20px"></div>
-    <div class="option-list" data-question="frustration" data-type="radio">
-      <div class="option-item" data-value="Payroll costs are eating my margins"><div class="option-badge">A</div><span>Payroll costs are eating my margins</span></div>
-      <div class="option-item" data-value="I can't find quality candidates"><div class="option-badge">B</div><span>I can't find quality candidates</span></div>
-      <div class="option-item" data-value="I've been burned by bad hires before"><div class="option-badge">C</div><span>I've been burned by bad hires before</span></div>
-      <div class="option-item" data-value="I don't have time to manage the recruiting process"><div class="option-badge">D</div><span>I don't have time to manage the recruiting process</span></div>
-      <div class="option-item" data-value="I'm scaling too fast to keep up"><div class="option-badge">E</div><span>I'm scaling too fast to keep up</span></div>
-      <div class="option-item" data-value="I haven't tried global hiring yet"><div class="option-badge">F</div><span>I haven't tried global hiring yet</span></div>
+    <p class="page-subtitle">Select all that apply.</p>
+    <div class="option-list" data-question="frustration" data-type="checkbox">
+      <div class="checkbox-item" data-value="Payroll costs are eating my margins"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Payroll costs are eating my margins</span></div>
+      <div class="checkbox-item" data-value="I can't find quality candidates"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>I can't find quality candidates</span></div>
+      <div class="checkbox-item" data-value="I've been burned by bad hires before"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>I've been burned by bad hires before</span></div>
+      <div class="checkbox-item" data-value="I don't have time to manage the recruiting process"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>I don't have time to manage the recruiting process</span></div>
+      <div class="checkbox-item" data-value="I'm scaling too fast to keep up"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>I'm scaling too fast to keep up</span></div>
+      <div class="checkbox-item" data-value="I haven't tried global hiring yet"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>I haven't tried global hiring yet</span></div>
     </div>
 
     <div class="testimonial-card">
@@ -708,6 +712,10 @@
       <div class="testimonial-name">Ryan McCann</div>
       <div class="testimonial-role">Head of Growth, Saucey</div>
     </div>
+
+    <button class="btn-primary hidden" onclick="nextPage()">
+      Continue <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+    </button>
   </div>
 
   <!-- ==================== PAGE 8: TIMELINE ==================== -->
@@ -887,14 +895,9 @@
 
     <p class="thankyou-text" style="margin-top:24px;">When you're ready to take the next step:</p>
 
-    <a href="https://cal.com/marcohire/30min" target="_blank" class="btn-secondary">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
-      </svg>
+    <a href="https://cal.com/marcohire/30min" target="_blank" class="btn-cta">
       Book a Free 30-Minute Strategy Call
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
     </a>
     <a href="https://www.marcohire.com/" target="_blank" class="text-link">Learn more at MarcoHire.com</a>
     <p class="thankyou-muted" style="text-align:center;">No pressure &mdash; we're here when you need us.</p>
@@ -1071,11 +1074,11 @@
       // Quiz answers
       role: data.role || '',
       bandwidth: data.bandwidth || '',
-      timeDrain: data.timeDrain || '',
+      timeDrain: Array.isArray(data.timeDrain) ? data.timeDrain.join(', ') : (data.timeDrain || ''),
       roles: Array.isArray(data.roles) ? data.roles.join(', ') : (data.roles || ''),
       hireCount: data.hireCount || '',
       revenue: data.revenue || '',
-      frustration: data.frustration || '',
+      frustration: Array.isArray(data.frustration) ? data.frustration.join(', ') : (data.frustration || ''),
       timeline: data.timeline || '',
 
       // Lead classification
