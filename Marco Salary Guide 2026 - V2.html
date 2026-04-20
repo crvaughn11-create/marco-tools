@@ -1649,13 +1649,85 @@ tbody td { padding: 14px 16px; font-size: 14px; }
 </footer>
 
 <script>
-    function sendHeight() {
-          if (window.parent !== window) {
-        window.parent.postMessage({ type: 'resize', height: document.documentElement.scrollHeight }, '*');
-          }
+(function() {
+  var isIframe = window.parent !== window;
+
+  /* ── Height reporting (fixes white space below footer) ── */
+  function getContentHeight() {
+    var footer = document.querySelector('.footer');
+    if (footer) {
+      return Math.ceil(footer.offsetTop + footer.offsetHeight);
     }
-    window.addEventListener('load', sendHeight);
-    window.addEventListener('resize', sendHeight);
+    return document.documentElement.scrollHeight;
+  }
+
+  function sendHeight() {
+    if (isIframe) {
+      window.parent.postMessage({ type: 'resize', height: getContentHeight() }, '*');
+    }
+  }
+
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+
+  if (!isIframe) return;
+
+  /* ── Sticky nav simulation for iframe context ── */
+  var nav = document.querySelector('.dept-nav');
+  if (!nav) return;
+
+  document.body.style.position = 'relative';
+  var navOriginalTop = nav.offsetTop;
+
+  window.addEventListener('resize', function() {
+    navOriginalTop = nav.offsetTop;
+  });
+
+  // Create absolutely-positioned clone (avoids layout shift)
+  var stickyNav = nav.cloneNode(true);
+  stickyNav.style.cssText =
+    'position:absolute;left:0;width:100%;z-index:101;display:none;' +
+    'background:white;border-bottom:1px solid var(--border);padding:0 40px;' +
+    'align-items:center;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;' +
+    'box-shadow:0 2px 8px rgba(0,0,0,0.08);';
+  document.body.appendChild(stickyNav);
+
+  // Handle scroll messages from parent
+  window.addEventListener('message', function(e) {
+    if (!e.data) return;
+
+    if (e.data.type === 'parentScroll') {
+      if (window.innerWidth <= 768) {
+        stickyNav.style.display = 'none';
+        return;
+      }
+      var visibleTop = e.data.scrollTop - e.data.iframeTop;
+      if (visibleTop > navOriginalTop && visibleTop > 0) {
+        stickyNav.style.display = 'flex';
+        stickyNav.style.top = visibleTop + 'px';
+      } else {
+        stickyNav.style.display = 'none';
+      }
+    }
+  });
+
+  // Handle anchor clicks — tell parent to scroll
+  function handleAnchorClick(e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    var targetId = link.getAttribute('href').slice(1);
+    var target = document.getElementById(targetId);
+    if (target) {
+      e.preventDefault();
+      window.parent.postMessage({
+        type: 'scrollTo',
+        offset: target.offsetTop
+      }, '*');
+    }
+  }
+  nav.addEventListener('click', handleAnchorClick);
+  stickyNav.addEventListener('click', handleAnchorClick);
+})();
 </script>
 
 </body>
