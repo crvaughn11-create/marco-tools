@@ -1648,5 +1648,15 @@ tbody td { padding: 14px 16px; font-size: 14px; }
     <p>&copy; 2026 MarcoHire. All rights reserved. &nbsp;|&nbsp; <a href="https://www.marcohire.com" style="color: var(--accent); text-decoration: none;">marcohire.com</a></p>
 </footer>
 
+<script>
+    function sendHeight() {
+          if (window.parent !== window) {
+        window.parent.postMessage({ type: 'resize', height: document.documentElement.scrollHeight }, '*');
+          }
+    }
+    window.addEventListener('load', sendHeight);
+    window.addEventListener('resize', sendHeight);
+</script>
+
 </body>
 </html>
