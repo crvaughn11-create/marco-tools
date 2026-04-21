@@ -1065,6 +1065,8 @@
   //   - Trigger email sequence for hot vs warm leads
   //
   function sendToZapier(data, isWarm) {
+    if (!data.firstName || !data.lastName || !data.email) return;
+
     const payload = {
       // Contact info
       firstName: data.firstName || '',
