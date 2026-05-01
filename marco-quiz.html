@@ -1026,6 +1026,9 @@
     // Send data to Zapier webhook
     sendToZapier(answers, isWarm);
 
+    const leadType = isWarm ? 'warm' : 'hot';
+    window.parent.postMessage({ type: 'quizComplete', leadType: leadType }, '*');
+
     // Route to appropriate thank you page
     if (isWarm) {
       showPage(12); // Warm lead
