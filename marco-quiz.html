@@ -931,6 +931,7 @@
     if (target) {
       target.classList.add('active');
       currentPage = num;
+      window.parent.postMessage({ type: 'quizStep', step: num, totalSteps: totalQuestionPages }, '*');
       updateProgress();
       document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
       postHeight();
