@@ -927,12 +927,16 @@
   utmFields.forEach(f => { if (urlParams.get(f)) answers[f] = urlParams.get(f); });
 
   // ==================== IFRAME HEIGHT ====================
-  function sendHeight() {
-    requestAnimationFrame(function() {
-      var h = document.documentElement.scrollHeight;
-      window.parent.postMessage({ type: 'quizHeight', height: h }, '*');
-    });
+  var maxHeight = 0;
+  function sendHeight(resetMax) {
+    if (resetMax) maxHeight = 0;
+    var h = document.documentElement.scrollHeight;
+    if (h > maxHeight) {
+      maxHeight = h;
+      window.parent.postMessage({ type: 'quizHeight', height: maxHeight }, '*');
+    }
   }
+  new ResizeObserver(function() { sendHeight(); }).observe(document.body);
   window.addEventListener('resize', sendHeight);
 
   // ==================== PROGRESS BAR ====================
@@ -1109,6 +1113,7 @@
       hideEventTypeDetails: false,
       layout: "month_view"
     });
+
   }
 
   // ==================== PERSONALIZED RESULTS ====================
