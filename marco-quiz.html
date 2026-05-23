@@ -927,6 +927,15 @@
   const utmFields = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','ad_id','adset_id'];
   utmFields.forEach(f => { if (urlParams.get(f)) answers[f] = urlParams.get(f); });
 
+  // ==================== IFRAME HEIGHT ====================
+  function sendHeight() {
+    requestAnimationFrame(function() {
+      const h = document.querySelector('.quiz-container').scrollHeight;
+      window.parent.postMessage({ type: 'quizHeight', height: h }, '*');
+    });
+  }
+  window.addEventListener('resize', sendHeight);
+
   // ==================== PROGRESS BAR ====================
   function updateProgress() {
     const pct = Math.max(8, Math.min(((currentPage - 1) / (totalQuestionPages - 1)) * 100, 100));
@@ -942,6 +951,9 @@
       currentPage = num;
       updateProgress();
       document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Send height to parent iframe
+      sendHeight();
 
       // Analytics: postMessage to parent for Meta Pixel / GA4
       if (num > 1 && num <= totalQuestionPages) {
@@ -1191,6 +1203,7 @@
 
   // ==================== INIT ====================
   updateProgress();
+  sendHeight();
 
   // Allow Enter key on form inputs
   document.querySelectorAll('.form-input').forEach(input => {
