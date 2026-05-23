@@ -32,7 +32,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 0px 20px 20px;
+    padding: 40px 20px;
   }
 
   .quiz-container {
@@ -182,6 +182,46 @@
   }
   .checkbox-item.selected .checkbox-box svg { opacity: 1; }
 
+  /* ========== AVATAR STRIP ========== */
+  .avatar-strip {
+    display: flex;
+    align-items: center;
+    margin: 24px 0 28px;
+  }
+  .avatar-strip img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 3px solid var(--white);
+    margin-left: -12px;
+    box-shadow: 0 2px 8px rgba(35, 37, 53, 0.1);
+  }
+  .avatar-strip img:first-child { margin-left: 0; }
+  .avatar-strip .avatar-count {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--purple-light);
+    border: 3px solid var(--white);
+    margin-left: -12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--purple);
+    box-shadow: 0 2px 8px rgba(35, 37, 53, 0.1);
+  }
+  .avatar-strip-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-left: 14px;
+    line-height: 1.4;
+  }
+  .avatar-strip-label b { color: var(--purple); }
+
   /* ========== INSIGHT CARDS ========== */
   .insight-card {
     display: flex;
@@ -217,23 +257,23 @@
   .testimonial-card {
     background: var(--purple-light);
     border-radius: var(--radius);
-    padding: 28px 24px;
-    text-align: center;
+    padding: 24px;
     margin-top: 28px;
   }
-  .testimonial-quote {
-    font-size: 14px;
-    line-height: 1.65;
-    font-style: italic;
-    color: var(--body);
-    margin-bottom: 20px;
+  .testimonial-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
   }
   .testimonial-avatar {
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 8px;
+  }
+  .testimonial-meta {
+    flex: 1;
   }
   .testimonial-name {
     font-weight: 700;
@@ -244,6 +284,100 @@
     font-size: 13px;
     color: var(--purple);
     font-weight: 500;
+  }
+  .testimonial-stars {
+    height: 16px;
+    margin-bottom: 12px;
+  }
+  .testimonial-quote {
+    font-size: 14px;
+    line-height: 1.65;
+    font-style: italic;
+    color: var(--body);
+  }
+
+  /* ========== CANDIDATE CARDS ========== */
+  .candidate-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 28px;
+    background: var(--purple-light);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .candidate-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+  }
+  .candidate-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+  .candidate-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .candidate-flag {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+  .candidate-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .candidate-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .candidate-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .candidate-logo {
+    height: 16px;
+    width: auto;
+    max-width: 80px;
+    object-fit: contain;
+  }
+  .candidate-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .candidate-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--success);
+    white-space: nowrap;
+  }
+  .candidate-price span {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+  .candidate-metric {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--purple);
+    background: var(--purple-light);
+    padding: 2px 7px;
+    border-radius: 6px;
+    white-space: nowrap;
   }
 
   /* ========== BUTTONS ========== */
@@ -274,50 +408,6 @@
   .btn-primary.hidden { display: none; }
   .btn-primary svg { width: 18px; height: 18px; }
 
-  .btn-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 16px 24px;
-    background: var(--purple);
-    color: var(--white);
-    border: none;
-    border-radius: var(--radius-sm);
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    margin-top: 16px;
-  }
-  .btn-cta:hover { background: var(--purple-hover); transform: translateY(-1px); }
-  .btn-cta svg { width: 18px; height: 18px; }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 14px 24px;
-    background: var(--white);
-    color: var(--purple);
-    border: 1.5px solid var(--purple);
-    border-radius: var(--radius-sm);
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    margin-top: 10px;
-  }
-  .btn-secondary:hover { background: var(--purple-light); }
-  .btn-secondary svg { width: 16px; height: 16px; }
-
   /* ========== FORM INPUTS ========== */
   .form-group { margin-bottom: 20px; }
   .form-label {
@@ -342,79 +432,79 @@
   .form-input::placeholder { color: #b0b3c4; }
   .form-input:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(95, 87, 255, 0.1); }
 
-  /* ========== THANK YOU PAGES ========== */
-  .thankyou-icon {
-    width: 64px;
-    height: 64px;
+  /* ========== VALIDATION ========== */
+  .validation-msg {
+    font-size: 13px;
+    color: #ef4444;
+    margin-top: 6px;
+    display: none;
+  }
+  .validation-msg.show { display: block; }
+
+  /* ========== PRIVACY NOTE ========== */
+  .privacy-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--purple-light);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin-top: 20px;
+  }
+  .privacy-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: var(--body);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .privacy-icon svg { width: 18px; height: 18px; }
+  .privacy-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  /* ========== BACK ARROW ========== */
+  .back-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--muted);
+    cursor: pointer;
+    margin-bottom: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    transition: color 0.2s;
+  }
+  .back-arrow:hover { color: var(--dark); }
+  .back-arrow svg { width: 16px; height: 16px; }
+
+  /* ========== RESULTS PAGE ========== */
+  .results-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 4px;
+  }
+  .results-header-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
     background: var(--purple-light);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
   }
-  .thankyou-icon svg {
-    width: 30px;
-    height: 30px;
-  }
-  .thankyou-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.3;
-    margin-bottom: 16px;
-  }
-  .thankyou-text {
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--body);
-    margin-bottom: 8px;
-  }
-  .thankyou-section-title {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--dark);
-    margin-top: 28px;
-    margin-bottom: 12px;
-  }
-  .thankyou-list {
-    list-style: none;
-    padding: 0;
-  }
-  .thankyou-list li {
-    padding: 6px 0;
-    font-size: 14px;
-    color: var(--body);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .thankyou-list li svg {
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
-    color: var(--purple);
-  }
-  .thankyou-muted {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 16px;
-  }
-  .thankyou-links { margin-top: 20px; display: flex; flex-direction: column; gap: 4px; }
-  .thankyou-links a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 0;
-    color: var(--purple);
-    font-weight: 600;
-    font-size: 14px;
-    text-decoration: none;
-  }
-  .thankyou-links a:hover { text-decoration: underline; }
-  .thankyou-links a svg { width: 18px; height: 18px; min-width: 18px; }
+  .results-header-icon svg { width: 22px; height: 22px; }
 
-  /* ========== STAT CARD (Results page) ========== */
   .stat-card {
     background: var(--purple-light);
     border-radius: var(--radius);
@@ -439,92 +529,86 @@
     color: var(--muted);
   }
 
-  /* ========== RESULTS HEADER ========== */
-  .results-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 4px;
+  /* ========== CAL EMBED ========== */
+  .cal-section {
+    margin-top: 28px;
+    border-top: 1.5px solid var(--border);
+    padding-top: 28px;
   }
-  .results-header-icon {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    background: var(--purple-light);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .cal-section-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
   }
-  .results-header-icon svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  /* ========== VALIDATION ========== */
-  .validation-msg {
-    font-size: 13px;
-    color: #ef4444;
-    margin-top: 6px;
-    display: none;
-  }
-  .validation-msg.show { display: block; }
-
-  /* ========== BACK BUTTON ========== */
-  .back-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    margin-bottom: 16px;
-    font-family: inherit;
-    font-size: 22px;
-    line-height: 1;
+  .cal-section-subtitle {
+    font-size: 14px;
     color: var(--muted);
-    cursor: pointer;
-    transition: color 0.2s ease;
+    margin-bottom: 20px;
   }
-  .back-btn:hover { color: var(--dark); }
-
-  /* ========== TEXT LINK ========== */
-  .text-link {
-    display: block;
-    text-align: center;
-    margin-top: 12px;
-    font-size: 13px;
-    color: var(--muted);
-    text-decoration: none;
-  }
-  .text-link:hover { color: var(--purple); text-decoration: underline; }
-
-  /* ========== PRIVACY NOTE ========== */
-  .privacy-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    background: var(--purple-light);
+  .cal-embed-wrapper {
+    width: 100%;
+    min-height: 500px;
     border-radius: var(--radius);
-    padding: 18px 22px;
-    margin-top: 20px;
+    overflow: hidden;
   }
-  .privacy-icon {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    background: var(--body);
-    border-radius: 50%;
+
+  .results-personalized {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--body);
+    margin-top: 16px;
+  }
+  .results-personalized strong { color: var(--dark); }
+
+  .results-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0 0;
+  }
+  .results-checklist li {
+    padding: 5px 0;
+    font-size: 14px;
+    color: var(--body);
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
   }
-  .privacy-icon svg {
-    width: 18px;
-    height: 18px;
+  .results-checklist li svg {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    color: var(--purple);
   }
-  .privacy-text {
+
+  /* ========== SOCIAL PROOF BAR ========== */
+  .social-proof-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 14px 18px;
+    background: var(--light-bg);
+    border-radius: var(--radius-sm);
+  }
+  .social-proof-avatars {
+    display: flex;
+  }
+  .social-proof-avatars img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--white);
+    margin-left: -8px;
+  }
+  .social-proof-avatars img:first-child { margin-left: 0; }
+  .social-proof-text {
     font-size: 13px;
-    line-height: 1.5;
     color: var(--muted);
+    line-height: 1.4;
   }
+  .social-proof-text b { color: var(--dark); }
 
   /* ========== RESPONSIVE ========== */
   @media (max-width: 640px) {
@@ -533,6 +617,10 @@
     .page-title { font-size: 19px; }
     .option-item, .checkbox-item { padding: 12px 14px; font-size: 14px; }
     .stat-number { font-size: 36px; }
+    .cal-embed-wrapper { min-height: 450px; }
+    .avatar-strip img { width: 40px; height: 40px; }
+    .avatar-strip .avatar-count { width: 40px; height: 40px; font-size: 11px; }
+    .candidate-cards { padding: 14px; }
   }
 </style>
 </head>
@@ -545,9 +633,21 @@
 
   <!-- ==================== PAGE 1: ROLE ==================== -->
   <div class="page active" data-page="1">
-    <img src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/67d3a5ad22697ea9c30717f5_Marco-owl-(black).png" alt="Marco" style="height:28px; margin-bottom:20px;">
-    <div class="page-title">You're 8 Quick Questions Away From Your Hiring Game Plan</div>
-    <p class="page-subtitle">See how elite founders are saving 80% on payroll while hiring top 1% global talent. Get our free <strong>2026 Salary Guide</strong>.</p>
+    <img src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/67d3a5ad22697ea9c30717f5_Marco-owl-(black).png" alt="Marco" style="height:32px; margin-bottom:16px;">
+    <div class="page-title">How Much Could You Save by Hiring Global Talent?</div>
+    <p class="page-subtitle">Answer 5 quick questions and we'll match you with a hiring strategist who can build your custom plan.</p>
+
+    <!-- Talent Pool Avatar Strip -->
+    <div class="avatar-strip">
+      <img src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/69d8f525b5a15a821d4d79c9_4614e3de6dd55878bbe5a4ecfe3ef588_raw-portraits-1j72pzbs-office.png" alt="Marco talent">
+      <img src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/6a10abd7d42a8ee2e1c17637_raw-portraits-xu6zecpc-office.png" alt="Marco talent">
+      <img src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/69d8f6b8527962d79e42054b_Marco-team-member-3.png" alt="Marco talent">
+      <img src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/69d8f6d2eccafa30b04ab406_Marco-team-member-5.png" alt="Marco talent">
+      <img src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/69d8f70e9c1b39d45e4e7c61_Marco-team-member-7.png" alt="Marco talent">
+      <img src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/69d8f7756d33a093ce419cf1_Marco-team-member-8.png" alt="Marco talent">
+      <div class="avatar-count">+500</div>
+      <div class="avatar-strip-label"><b>Pre-vetted global talent</b> ready to start</div>
+    </div>
 
     <div class="page-title" style="font-size:17px; margin-bottom:20px;">What best describes your role?</div>
     <div class="option-list" data-question="role" data-type="radio">
@@ -557,63 +657,11 @@
       <div class="option-item" data-value="Agency Owner"><div class="option-badge">D</div><span>Agency Owner</span></div>
       <div class="option-item" data-value="Other"><div class="option-badge">E</div><span>Other</span></div>
     </div>
-
   </div>
 
-  <!-- ==================== PAGE 2: BANDWIDTH ==================== -->
+  <!-- ==================== PAGE 2: ROLES NEEDED ==================== -->
   <div class="page" data-page="2">
-    <div class="page-title">How would you describe your current team bandwidth?</div>
-    <div style="height:20px"></div>
-    <div class="option-list" data-question="bandwidth" data-type="radio">
-      <div class="option-item" data-value="Stretched thin &mdash; we needed help yesterday"><div class="option-badge">A</div><span>Stretched thin &mdash; we needed help yesterday</span></div>
-      <div class="option-item" data-value="We're managing, but growth is stalling"><div class="option-badge">B</div><span>We're managing, but growth is stalling</span></div>
-      <div class="option-item" data-value="I'm doing work I should be delegating"><div class="option-badge">C</div><span>I'm doing work I should be delegating</span></div>
-      <div class="option-item" data-value="We have capacity for now"><div class="option-badge">D</div><span>We have capacity for now</span></div>
-    </div>
-
-    <div class="insight-card">
-      <div class="insight-icon">
-        <!-- Bar chart icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="20" x2="18" y2="10"/>
-          <line x1="12" y1="20" x2="12" y2="4"/>
-          <line x1="6" y1="20" x2="6" y2="14"/>
-        </svg>
-      </div>
-      <div class="insight-text"><b>89% of growing companies</b> say hiring is their #1 bottleneck to scaling.</div>
-    </div>
-  </div>
-
-  <!-- ==================== PAGE 3: TIME DRAIN ==================== -->
-  <div class="page" data-page="3">
-    <div class="page-title">What's eating up most of your time right now?</div>
-    <p class="page-subtitle">Select all that apply.</p>
-    <div class="option-list" data-question="timeDrain" data-type="checkbox">
-      <div class="checkbox-item" data-value="Recruiting and interviewing"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Recruiting and interviewing</span></div>
-      <div class="checkbox-item" data-value="Managing day-to-day operations"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Managing day-to-day operations</span></div>
-      <div class="checkbox-item" data-value="Tasks I know I should be delegating"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Tasks I know I should be delegating</span></div>
-      <div class="checkbox-item" data-value="Wearing too many hats"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Wearing too many hats</span></div>
-      <div class="checkbox-item" data-value="Revenue-generating work (the good kind)"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Revenue-generating work (the good kind)</span></div>
-    </div>
-
-    <div class="insight-card">
-      <div class="insight-icon">
-        <!-- Clock icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <polyline points="12 6 12 12 16 14"/>
-        </svg>
-      </div>
-      <div class="insight-text">Founders spend an average of <b>12 hours per week</b> on tasks a qualified hire could handle.</div>
-    </div>
-
-    <button class="btn-primary hidden" onclick="nextPage()">
-      Continue <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-    </button>
-  </div>
-
-  <!-- ==================== PAGE 4: ROLES (CHECKBOXES) ==================== -->
-  <div class="page" data-page="4">
+    <button class="back-arrow" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg> Back</button>
     <div class="page-title">Which roles would make the biggest impact on your business right now?</div>
     <p class="page-subtitle">Select all that apply.</p>
     <div class="option-list" data-question="roles" data-type="checkbox">
@@ -627,17 +675,12 @@
       <div class="checkbox-item" data-value="Operations / Project Management"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Operations / Project Management</span></div>
     </div>
 
-    <div class="insight-card">
-      <div class="insight-icon">
-        <!-- Rocket icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-          <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-          <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-          <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-        </svg>
+    <!-- Roles Insight Card -->
+    <div style="margin-top:16px; padding:16px 18px; background:var(--purple-light); border-radius:var(--radius-sm); display:flex; align-items:flex-start; gap:12px;">
+      <div style="flex-shrink:0; width:36px; height:36px; background:var(--purple); border-radius:8px; display:flex; align-items:center; justify-content:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.8" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
       </div>
-      <div class="insight-text">The most popular first hires? <b>Executive Assistants</b> and <b>Marketing Specialists</b> &mdash; roles that free up founder time immediately.</div>
+      <div style="font-size:13.5px; line-height:1.5; color:var(--body);">Popular first hires: <b style="color:var(--dark);">Marketing Specialists</b>, <b style="color:var(--dark);">Finance and Operations</b> — roles that free up founder time immediately.</div>
     </div>
 
     <button class="btn-primary hidden" onclick="nextPage()">
@@ -645,272 +688,239 @@
     </button>
   </div>
 
-  <!-- ==================== PAGE 5: HIRE COUNT ==================== -->
-  <div class="page" data-page="5">
+  <!-- ==================== PAGE 3: HIRE COUNT ==================== -->
+  <div class="page" data-page="3">
+    <button class="back-arrow" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg> Back</button>
     <div class="page-title">How many hires are you planning in the next 6 months?</div>
     <div style="height:20px"></div>
     <div class="option-list" data-question="hireCount" data-type="radio">
-      <div class="option-item" data-value="1&ndash;3 hires"><div class="option-badge">A</div><span>1&ndash;3 hires</span></div>
-      <div class="option-item" data-value="4&ndash;10 hires"><div class="option-badge">B</div><span>4&ndash;10 hires</span></div>
-      <div class="option-item" data-value="10&ndash;20 hires"><div class="option-badge">C</div><span>10&ndash;20 hires</span></div>
+      <div class="option-item" data-value="1–3 hires"><div class="option-badge">A</div><span>1–3 hires</span></div>
+      <div class="option-item" data-value="4–10 hires"><div class="option-badge">B</div><span>4–10 hires</span></div>
+      <div class="option-item" data-value="10–20 hires"><div class="option-badge">C</div><span>10–20 hires</span></div>
       <div class="option-item" data-value="20+ hires"><div class="option-badge">D</div><span>20+ hires</span></div>
       <div class="option-item" data-value="Just exploring for now"><div class="option-badge">E</div><span>Just exploring for now</span></div>
     </div>
 
-    <div class="insight-card">
-      <div class="insight-icon">
-        <!-- Trending up icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-          <polyline points="17 6 23 6 23 12"/>
-        </svg>
+    <!-- Hire Count Insight -->
+    <div style="margin-top:16px; padding:16px 18px; background:var(--purple-light); border-radius:var(--radius-sm); display:flex; align-items:center; gap:14px;">
+      <div style="flex-shrink:0;">
+        <div style="font-size:28px; font-weight:700; color:var(--purple); line-height:1;">83%</div>
       </div>
-      <div class="insight-text">Companies that hire <b>3+ global roles</b> see 60% more cost savings than single hires.</div>
+      <div style="font-size:13.5px; line-height:1.5; color:var(--body);">of clients hire <b style="color:var(--dark);">additional roles within 90 days.</b></div>
+    </div>
+
+    <!-- Andrew Lerios Testimonial -->
+    <div class="testimonial-card">
+      <div class="testimonial-top">
+        <img class="testimonial-avatar" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/6a107ea1d06552d1bb62e748_Andrew-Lerios.jpg" alt="Andrew Lerios">
+        <div class="testimonial-meta">
+          <div class="testimonial-name">Andrew Lerios</div>
+          <div class="testimonial-role">COO, London Alley</div>
+        </div>
+      </div>
+      <img class="testimonial-stars" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/67f01342ffd7002aad8aa205_stars-(purple).png" alt="5 stars">
+      <div class="testimonial-quote">"We were scaling fast, Marco placed two incredible hires in under a month. The cost savings were significant, but the caliber of talent is what really surprised us."</div>
     </div>
   </div>
 
-  <!-- ==================== PAGE 6: REVENUE ==================== -->
-  <div class="page" data-page="6">
+  <!-- ==================== PAGE 4: REVENUE ==================== -->
+  <div class="page" data-page="4">
+    <button class="back-arrow" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg> Back</button>
     <div class="page-title">What's your company's annual revenue?</div>
-    <div style="height:20px"></div>
+    <p class="page-subtitle">This helps us benchmark savings for your stage.</p>
     <div class="option-list" data-question="revenue" data-type="radio">
       <div class="option-item" data-value="Under $500K"><div class="option-badge">A</div><span>Under $500K</span></div>
-      <div class="option-item" data-value="$500K &ndash; $1M"><div class="option-badge">B</div><span>$500K &ndash; $1M</span></div>
-      <div class="option-item" data-value="$1M &ndash; $5M"><div class="option-badge">C</div><span>$1M &ndash; $5M</span></div>
-      <div class="option-item" data-value="$5M &ndash; $25M"><div class="option-badge">D</div><span>$5M &ndash; $25M</span></div>
+      <div class="option-item" data-value="$500K – $1M"><div class="option-badge">B</div><span>$500K – $1M</span></div>
+      <div class="option-item" data-value="$1M – $5M"><div class="option-badge">C</div><span>$1M – $5M</span></div>
+      <div class="option-item" data-value="$5M – $25M"><div class="option-badge">D</div><span>$5M – $25M</span></div>
       <div class="option-item" data-value="$25M+"><div class="option-badge">E</div><span>$25M+</span></div>
       <div class="option-item" data-value="Prefer not to disclose"><div class="option-badge">F</div><span>I'd rather not disclose</span></div>
     </div>
 
-    <div class="insight-card">
-      <div class="insight-icon">
-        <!-- Dollar/savings icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="1" x2="12" y2="23"/>
-          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-        </svg>
+    <!-- Candidate Pricing Cards -->
+    <div class="candidate-cards">
+      <div style="font-size:13px; font-weight:600; color:var(--dark); margin-bottom:4px; text-align:center;">What Marco clients are paying for top talent</div>
+      <div class="candidate-card">
+        <div class="candidate-avatar-wrap">
+          <img class="candidate-avatar" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/69d8f6b8527962d79e42054b_Marco-team-member-3.png" alt="Growth Specialist">
+          <img class="candidate-flag" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/69f18907cc0ea2a2fb3fff56_Brazil-Circle.png" alt="Brazil">
+        </div>
+        <div class="candidate-info">
+          <div class="candidate-name">Growth Specialist</div>
+          <div class="candidate-meta">
+            <img class="candidate-logo" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/6a10e7aaf48aaf559642e779_Sephora-MarcoHire2.png" alt="HubSpot">
+            <div class="candidate-metric">+320% traffic</div>
+          </div>
+        </div>
+        <div class="candidate-right">
+          <div class="candidate-price">$2,250<span>/mo</span></div>
+        </div>
       </div>
-      <div class="insight-text">Companies doing <b>$1M+</b> typically save <b>50&ndash;80%</b> on payroll with pre-vetted global talent.</div>
+      <div class="candidate-card">
+        <div class="candidate-avatar-wrap">
+          <img class="candidate-avatar" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/69d8f7cc92a412957d462392_Marco-team-member-9.png" alt="Financial Controller">
+          <img class="candidate-flag" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/6a10ac843fa7c8b60af4c730_Philippines-Circle.png" alt="Philippines">
+        </div>
+        <div class="candidate-info">
+          <div class="candidate-name">Financial Controller</div>
+          <div class="candidate-meta">
+            <img class="candidate-logo" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/6a10e7aa9dd31028746818e3_Amex---MarcoHire2.png" alt="EY">
+            <div class="candidate-metric">14% savings</div>
+          </div>
+        </div>
+        <div class="candidate-right">
+          <div class="candidate-price">$1,800<span>/mo</span></div>
+        </div>
+      </div>
+      <div class="candidate-card">
+        <div class="candidate-avatar-wrap">
+          <img class="candidate-avatar" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/6a10abee5da55d0ce3a25876_raw-portraits-m8knfiqc-office.png" alt="Sales Development Rep">
+          <img class="candidate-flag" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/6a10ac7779940cbde57705fb_Colombia-Circle.png" alt="Colombia">
+        </div>
+        <div class="candidate-info">
+          <div class="candidate-name">Sales Dev Rep</div>
+          <div class="candidate-meta">
+            <img class="candidate-logo" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/6a10e7aa622c543ca7a53db7_Accenture---MarcoHire2.png" alt="Airbnb">
+            <div class="candidate-metric">120+ calls/day</div>
+          </div>
+        </div>
+        <div class="candidate-right">
+          <div class="candidate-price">$2,000<span>/mo</span></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ==================== PAGE 7: HIRING FRUSTRATION ==================== -->
-  <div class="page" data-page="7">
-    <div class="page-title">What's been your biggest hiring frustration?</div>
-    <p class="page-subtitle">Select all that apply.</p>
-    <div class="option-list" data-question="frustration" data-type="checkbox">
-      <div class="checkbox-item" data-value="Payroll costs are eating my margins"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>Payroll costs are eating my margins</span></div>
-      <div class="checkbox-item" data-value="I can't find quality candidates"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>I can't find quality candidates</span></div>
-      <div class="checkbox-item" data-value="I've been burned by bad hires before"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>I've been burned by bad hires before</span></div>
-      <div class="checkbox-item" data-value="I don't have time to manage the recruiting process"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>I don't have time to manage the recruiting process</span></div>
-      <div class="checkbox-item" data-value="I'm scaling too fast to keep up"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>I'm scaling too fast to keep up</span></div>
-      <div class="checkbox-item" data-value="I haven't tried global hiring yet"><div class="checkbox-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span>I haven't tried global hiring yet</span></div>
-    </div>
-
-    <div class="testimonial-card">
-      <div class="testimonial-quote">"We've hired 7+ team members through Marco, and it's been a game-changer. They were experts in using AI, and started day one incredibly prepared. Not only did we save on payroll, the Marco hires have quickly become leaders within our organization."</div>
-      <img class="testimonial-avatar" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/6852f9eb699614591baf41cb_Ryan-McCann.jpg" alt="Ryan McCann">
-      <div class="testimonial-name">Ryan McCann</div>
-      <div class="testimonial-role">Head of Growth, Saucey</div>
-    </div>
-
-    <button class="btn-primary hidden" onclick="nextPage()">
-      Continue <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-    </button>
-  </div>
-
-  <!-- ==================== PAGE 8: TIMELINE ==================== -->
-  <div class="page" data-page="8">
+  <!-- ==================== PAGE 5: TIMELINE ==================== -->
+  <div class="page" data-page="5">
+    <button class="back-arrow" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg> Back</button>
     <div class="page-title">How soon do you need your next hire?</div>
     <div style="height:20px"></div>
     <div class="option-list" data-question="timeline" data-type="radio">
-      <div class="option-item" data-value="ASAP &mdash; I needed someone yesterday"><div class="option-badge">A</div><span>ASAP &mdash; I needed someone yesterday</span></div>
+      <div class="option-item" data-value="ASAP — I needed someone yesterday"><div class="option-badge">A</div><span>ASAP — I needed someone yesterday</span></div>
       <div class="option-item" data-value="Within the next 30 days"><div class="option-badge">B</div><span>Within the next 30 days</span></div>
-      <div class="option-item" data-value="In the next 1&ndash;3 months"><div class="option-badge">C</div><span>In the next 1&ndash;3 months</span></div>
+      <div class="option-item" data-value="In the next 1–3 months"><div class="option-badge">C</div><span>In the next 1–3 months</span></div>
       <div class="option-item" data-value="Next quarter"><div class="option-badge">D</div><span>Next quarter</span></div>
       <div class="option-item" data-value="Just researching for now"><div class="option-badge">E</div><span>Just researching for now</span></div>
     </div>
 
-    <div class="insight-card">
-      <div class="insight-icon">
-        <!-- Lightning/bolt icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-        </svg>
+    <!-- Ryan McCann Testimonial -->
+    <div class="testimonial-card">
+      <div class="testimonial-top">
+        <img class="testimonial-avatar" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/6852f9eb699614591baf41cb_Ryan-McCann.jpg" alt="Ryan McCann">
+        <div class="testimonial-meta">
+          <div class="testimonial-name">Ryan McCann</div>
+          <div class="testimonial-role">Head of Growth, Saucey</div>
+        </div>
       </div>
-      <div class="insight-text">Most clients receive <b>matched candidate profiles within 48 hours</b> of their strategy call.</div>
+      <img class="testimonial-stars" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/67f01342ffd7002aad8aa205_stars-(purple).png" alt="5 stars">
+      <div class="testimonial-quote">"We've hired 7+ team members through Marco. They were experts in using AI, and started day one incredibly prepared. The Marco hires have quickly become leaders within our organization."</div>
     </div>
   </div>
 
-  <!-- ==================== PAGE 9: RESULTS + EMAIL ==================== -->
-  <div class="page" data-page="9">
+  <!-- ==================== PAGE 6: CONTACT DETAILS ==================== -->
+  <div class="page" data-page="6">
+    <button class="back-arrow" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg> Back</button>
     <div class="results-header">
       <div class="results-header-icon">
-        <!-- Lightbulb icon -->
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#5f57ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M9 18h6"/>
           <path d="M10 22h4"/>
           <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/>
         </svg>
       </div>
-      <div class="page-title" style="margin-bottom:0;">You're Leaving Money on the Table</div>
+      <div class="page-title" style="margin-bottom:0;">Your Custom Hiring Plan Is Ready</div>
     </div>
     <p style="font-size:15px; line-height:1.6; color:var(--body); margin-top:16px;">
-      Based on your answers, <strong style="color:var(--dark);">your business could save tens of thousands per year</strong> by tapping into pre-vetted global talent &mdash; without sacrificing quality.
+      Introduce yourself and we'll match you with our hiring strategist who specializes in <strong id="rolesPreview" style="color:var(--dark);">your selected roles</strong>.
     </p>
 
-    <div class="stat-card">
-      <div class="stat-label">On average, Marco clients save</div>
-      <div class="stat-number">50&ndash;80%</div>
-      <div class="stat-sublabel">on payroll costs</div>
+    <div style="display:flex; gap:12px; margin-top:24px;">
+      <div class="form-group" style="flex:1;">
+        <label class="form-label">First name *</label>
+        <input class="form-input" type="text" id="firstNameInput" placeholder="Jane" required>
+        <div class="validation-msg" id="firstNameError">First name is required.</div>
+      </div>
+      <div class="form-group" style="flex:1;">
+        <label class="form-label">Last name *</label>
+        <input class="form-input" type="text" id="lastNameInput" placeholder="Smith" required>
+        <div class="validation-msg" id="lastNameError">Last name is required.</div>
+      </div>
     </div>
-
-    <p style="font-size:15px; color:var(--body); margin-bottom:4px;">Enter your email to unlock your <strong>personalized savings estimate</strong> and receive our <strong>free 2026 Global Salary Guide</strong>.</p>
-
-    <div class="form-group" style="margin-top:20px;">
-      <label class="form-label">Where should we send your results?</label>
+    <div class="form-group">
+      <label class="form-label">Work email *</label>
       <input class="form-input" type="email" id="emailInput" placeholder="you@company.com" required>
       <div class="validation-msg" id="emailError">Please enter a valid email address.</div>
     </div>
-
-    <div class="privacy-card">
-      <div class="privacy-icon">
-        <!-- Shield/lock icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        </svg>
-      </div>
-      <div class="privacy-text">We respect your inbox. You'll receive your savings estimate and salary guide &mdash; that's it.</div>
-    </div>
-
-    <button class="btn-primary" onclick="submitEmail()">
-      See My Results <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-    </button>
-  </div>
-
-  <!-- ==================== PAGE 10: CONTACT DETAILS ==================== -->
-  <div class="page" data-page="10">
-    <div class="page-title">Almost there &mdash; tell us a bit about you</div>
-    <p class="page-subtitle">So we can tailor your savings report and match you with the right talent.</p>
-
     <div class="form-group">
-      <label class="form-label">First name *</label>
-      <input class="form-input" type="text" id="firstNameInput" placeholder="Jane" required>
-      <div class="validation-msg" id="firstNameError">First name is required.</div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Last name *</label>
-      <input class="form-input" type="text" id="lastNameInput" placeholder="Smith" required>
-      <div class="validation-msg" id="lastNameError">Last name is required.</div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Company website <span style="color:var(--muted); font-weight:400;">(optional)</span></label>
-      <input class="form-input" type="url" id="websiteInput" placeholder="https://yourcompany.com">
+      <label class="form-label">Company website *</label>
+      <input class="form-input" type="url" id="websiteInput" placeholder="https://yourcompany.com" required>
+      <div class="validation-msg" id="websiteError">Please enter your company website.</div>
     </div>
 
-    <div class="insight-card">
-      <div class="insight-icon">
-        <!-- Briefcase icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-        </svg>
-      </div>
-      <div class="insight-text">This helps us benchmark your industry and provide relevant salary comparisons.</div>
+    <!-- Salary Guide Teaser -->
+    <div style="display:flex; align-items:center; gap:14px; margin-top:8px; margin-bottom:20px; padding:14px 16px; background:var(--purple-light); border-radius:var(--radius-sm);">
+      <img src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/695867039e48b631d8e7367e_Free_Book_Mockup_2-copy.jpg" alt="2026 Global Salary Guide" style="width:56px; height:auto; border-radius:6px; flex-shrink:0;">
+      <div style="font-size:13px; line-height:1.5; color:var(--body);">We'll send you Marco's free <b style="color:var(--dark);">2026 Global Salary Guide</b> so you can see what other founders are paying for elite talent.</div>
     </div>
 
     <button class="btn-primary" onclick="submitForm()">
-      Get My Savings Report <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      Get My Hiring Plan <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
     </button>
   </div>
 
-  <!-- ==================== PAGE 11: HOT LEAD THANK YOU ==================== -->
-  <div class="page" data-page="11">
-    <div class="thankyou-icon">
-      <!-- Target/bullseye icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#5f57ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <circle cx="12" cy="12" r="6"/>
-        <circle cx="12" cy="12" r="2"/>
-      </svg>
-    </div>
-    <div class="thankyou-title">You're a Perfect Fit for Global Hiring</div>
-    <p class="thankyou-text">Based on your answers, <strong>you could save 50&ndash;80% on payroll costs</strong> by hiring pre-vetted global talent through Marco.</p>
-    <p class="thankyou-text">Your <strong>2026 Global Salary Guide</strong> is on its way to your inbox.</p>
-    <p class="thankyou-text">But here's the fastest way to unlock your savings:</p>
-
-    <div class="thankyou-section-title">Book a Free 30-Minute Strategy Call</div>
-    <ul class="thankyou-list">
-      <li>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-        Your specific hiring needs and budget
-      </li>
-      <li>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-        Roles we can fill in as little as 48 hours
-      </li>
-      <li>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-        A custom savings breakdown for your business
-      </li>
-    </ul>
-
-    <a href="https://cal.com/marcohire/30min" target="_blank" class="btn-cta">
-      Book Your Free Strategy Call
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-    </a>
-    <a href="https://www.marcohire.com/" target="_blank" class="text-link">Learn more at MarcoHire.com</a>
-    <p class="thankyou-muted" style="text-align:center;">No pressure, no commitment &mdash; just a clear plan to scale smarter.</p>
-  </div>
-
-  <!-- ==================== PAGE 12: WARM LEAD THANK YOU ==================== -->
-  <div class="page" data-page="12">
-    <div class="thankyou-icon">
-      <!-- Mail/envelope icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#5f57ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-        <polyline points="22,6 12,13 2,6"/>
-      </svg>
-    </div>
-    <div class="thankyou-title">Your 2026 Global Salary Guide Is on Its Way</div>
-    <p class="thankyou-text">Check your inbox &mdash; you'll find salary benchmarks, hiring insights, and cost comparisons across 30+ countries.</p>
-    <p class="thankyou-text">In the meantime, here are a few resources to help you explore global hiring:</p>
-
-    <div class="thankyou-links">
-      <a href="https://www.marcohire.com/blog" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-        </svg>
-        The Marco Blog &mdash; Hiring strategies, salary data, and client success stories
-      </a>
-      <a href="https://www.marcohire.com/" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <!-- ==================== PAGE 7: RESULTS + EMBEDDED CAL ==================== -->
+  <div class="page" data-page="7">
+    <div class="results-header">
+      <div class="results-header-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#5f57ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
-          <line x1="2" y1="12" x2="22" y2="12"/>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          <circle cx="12" cy="12" r="6"/>
+          <circle cx="12" cy="12" r="2"/>
         </svg>
-        How Marco Works &mdash; See how we match companies with top global talent
-      </a>
+      </div>
+      <div class="page-title" style="margin-bottom:0;" id="resultsTitle">You're a Great Fit for Global Hiring</div>
     </div>
 
-    <p class="thankyou-text" style="margin-top:24px;">When you're ready to take the next step:</p>
+    <p class="results-personalized" id="resultsBody">
+      Based on your answers, <strong>your business could save significantly on payroll costs</strong> by hiring pre-vetted global talent through Marco.
+    </p>
 
-    <a href="https://cal.com/marcohire/30min" target="_blank" class="btn-cta">
-      Book a Free 30-Minute Strategy Call
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-    </a>
-    <a href="https://www.marcohire.com/" target="_blank" class="text-link">Learn more at MarcoHire.com</a>
-    <p class="thankyou-muted" style="text-align:center;">No pressure &mdash; we're here when you need us.</p>
+    <p id="resultsSummary" style="font-size:14px; color:var(--body); line-height:1.6;"></p>
+
+    <!-- Social Proof on Results Page -->
+    <div class="testimonial-card" style="margin-top:24px;">
+      <div class="testimonial-top">
+        <img class="testimonial-avatar" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/6a107ea1d06552d1bb62e748_Andrew-Lerios.jpg" alt="Andrew Lerios">
+        <div class="testimonial-meta">
+          <div class="testimonial-name">Andrew Lerios</div>
+          <div class="testimonial-role">COO, London Alley</div>
+        </div>
+      </div>
+      <img class="testimonial-stars" src="https://cdn.prod.website-files.com/67d3a5ad22697ea9c3071452/67f01342ffd7002aad8aa205_stars-(purple).png" alt="5 stars">
+      <div class="testimonial-quote">"The cost savings were significant, but the caliber of talent is what really surprised us. Marco placed two incredible hires in under a month."</div>
+    </div>
+
+    <div class="cal-section">
+      <div class="cal-section-title">Pick a Time to Talk With Your Hiring Strategist</div>
+      <div class="cal-section-subtitle">30 minutes. No pressure. Walk through your custom plan and get matched candidate profiles within 1 week.</div>
+      <div class="cal-embed-wrapper" id="my-cal-inline-30min" style="overflow:scroll;"></div>
+    </div>
   </div>
 
 </div><!-- /quiz-container -->
+
+<!-- Cal.com Embed Script -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "30min", {origin:"https://app.cal.com"});
+</script>
 
 <script>
   // ==================== STATE ====================
   const answers = {};
   let currentPage = 1;
-  const totalQuestionPages = 10; // Pages 1-10 are question pages
+  const totalQuestionPages = 6; // Pages 1-6 are question/form pages
 
   // ==================== UTM CAPTURE ====================
   const urlParams = new URLSearchParams(window.location.search);
@@ -919,8 +929,7 @@
 
   // ==================== PROGRESS BAR ====================
   function updateProgress() {
-    const raw = ((currentPage - 1) / (totalQuestionPages - 1)) * 100;
-    const pct = Math.min(Math.max(raw, 8), 100);
+    const pct = Math.max(8, Math.min(((currentPage - 1) / (totalQuestionPages - 1)) * 100, 100));
     document.getElementById('progressBar').style.width = pct + '%';
   }
 
@@ -931,10 +940,22 @@
     if (target) {
       target.classList.add('active');
       currentPage = num;
-      window.parent.postMessage({ type: 'quizStep', step: num, totalSteps: totalQuestionPages }, '*');
       updateProgress();
       document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      postHeight();
+
+      // Analytics: postMessage to parent for Meta Pixel / GA4
+      if (num > 1 && num <= totalQuestionPages) {
+        window.parent.postMessage({ type: 'quizStep', step: num, totalSteps: totalQuestionPages }, '*');
+      }
+
+      // Pre-fill roles preview on contact page
+      if (num === 6 && answers.roles) {
+        const rolesArr = Array.isArray(answers.roles) ? answers.roles : [answers.roles];
+        const preview = rolesArr.length > 2
+          ? rolesArr.slice(0, 2).join(', ') + ' + more'
+          : rolesArr.join(' & ');
+        document.getElementById('rolesPreview').textContent = preview;
+      }
     }
   }
 
@@ -942,7 +963,11 @@
     showPage(currentPage + 1);
   }
 
-  // ==================== RADIO SELECTION (auto-advance, no button) ====================
+  function goBack() {
+    if (currentPage > 1) showPage(currentPage - 1);
+  }
+
+  // ==================== RADIO SELECTION (auto-advance) ====================
   document.querySelectorAll('.option-list[data-type="radio"]').forEach(list => {
     const question = list.dataset.question;
     list.querySelectorAll('.option-item').forEach(item => {
@@ -950,13 +975,12 @@
         list.querySelectorAll('.option-item').forEach(i => i.classList.remove('selected'));
         item.classList.add('selected');
         answers[question] = item.dataset.value;
-        // Auto-advance after brief visual feedback
         setTimeout(() => nextPage(), 400);
       });
     });
   });
 
-  // ==================== CHECKBOX SELECTION (show button on selection) ====================
+  // ==================== CHECKBOX SELECTION ====================
   document.querySelectorAll('.option-list[data-type="checkbox"]').forEach(list => {
     const question = list.dataset.question;
     list.querySelectorAll('.checkbox-item').forEach(item => {
@@ -964,7 +988,6 @@
         item.classList.toggle('selected');
         const selected = list.querySelectorAll('.checkbox-item.selected');
         answers[question] = Array.from(selected).map(s => s.dataset.value);
-        // Show/hide button based on selections
         const btn = item.closest('.page').querySelector('.btn-primary');
         if (btn) {
           if (selected.length > 0) {
@@ -977,25 +1000,13 @@
     });
   });
 
-  // ==================== EMAIL SUBMISSION ====================
-  function submitEmail() {
-    const email = document.getElementById('emailInput').value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const errEl = document.getElementById('emailError');
-    if (!emailRegex.test(email)) {
-      errEl.classList.add('show');
-      return;
-    }
-    errEl.classList.remove('show');
-    answers.email = email;
-    nextPage();
-  }
-
   // ==================== FORM SUBMISSION ====================
   function submitForm() {
     const firstName = document.getElementById('firstNameInput').value.trim();
     const lastName = document.getElementById('lastNameInput').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
     const website = document.getElementById('websiteInput').value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let valid = true;
 
     if (!firstName) {
@@ -1010,10 +1021,23 @@
     } else {
       document.getElementById('lastNameError').classList.remove('show');
     }
+    if (!emailRegex.test(email)) {
+      document.getElementById('emailError').classList.add('show');
+      valid = false;
+    } else {
+      document.getElementById('emailError').classList.remove('show');
+    }
+    if (!website) {
+      document.getElementById('websiteError').classList.add('show');
+      valid = false;
+    } else {
+      document.getElementById('websiteError').classList.remove('show');
+    }
     if (!valid) return;
 
     answers.firstName = firstName;
     answers.lastName = lastName;
+    answers.email = email;
     answers.website = website;
     answers.submittedAt = new Date().toISOString();
 
@@ -1023,76 +1047,125 @@
       answers.hireCount === 'Just exploring for now' ||
       answers.timeline === 'Just researching for now'
     );
+    const leadType = isWarm ? 'warm' : 'hot';
 
-    // Send data to Zapier webhook
+    // Empty submission guard
+    if (!answers.firstName || !answers.lastName || !answers.email || !answers.website) return;
+
+    // Send data to Zapier
     sendToZapier(answers, isWarm);
 
-    const leadType = isWarm ? 'warm' : 'hot';
+    // Personalize results page
+    personalizeResults();
+
+    // Show results page
+    showPage(7);
+
+    // Hide progress bar on results
+    document.querySelector('.progress-bar-track').style.display = 'none';
+
+    // Fire Lead event via postMessage
     window.parent.postMessage({ type: 'quizComplete', leadType: leadType }, '*');
 
-    // Route to appropriate thank you page
-    if (isWarm) {
-      showPage(12); // Warm lead
-    } else {
-      showPage(11); // Hot lead
+    // Build notes for Cal.com
+    const rolesStr = Array.isArray(answers.roles) ? answers.roles.join(', ') : (answers.roles || '');
+    const calNotes = 'Quiz answers — Role: ' + (answers.role || '') +
+      ' | Hiring for: ' + rolesStr +
+      ' | Hires planned: ' + (answers.hireCount || '') +
+      ' | Revenue: ' + (answers.revenue || '') +
+      ' | Timeline: ' + (answers.timeline || '') +
+      ' | Website: ' + (answers.website || '') +
+      ' | Lead type: ' + leadType;
+
+    // Initialize Cal.com inline embed with pre-filled data
+    Cal.ns["30min"]("inline", {
+      elementOrSelector: "#my-cal-inline-30min",
+      config: {
+        layout: "month_view",
+        useSlotsViewOnSmallScreen: "true",
+        name: firstName + ' ' + lastName,
+        email: email,
+        notes: calNotes,
+        "Company website": website
+      },
+      calLink: "marcohire/30min",
+    });
+    Cal.ns["30min"]("ui", {
+      cssVarsPerTheme: {
+        light: { "cal-brand": "#5e57f6" },
+        dark: { "cal-brand": "#5e57f6" }
+      },
+      hideEventTypeDetails: false,
+      layout: "month_view"
+    });
+  }
+
+  // ==================== PERSONALIZED RESULTS ====================
+  function personalizeResults() {
+    const rolesArr = Array.isArray(answers.roles) ? answers.roles : [];
+    const hireCount = answers.hireCount || '';
+    const timeline = answers.timeline || '';
+    const revenue = answers.revenue || '';
+
+    // Build personalized body text
+    let bodyParts = [];
+
+    if (rolesArr.length > 0) {
+      const rolesList = rolesArr.length > 2
+        ? rolesArr.slice(0, 2).join(', ') + ', and more'
+        : rolesArr.join(' and ');
+      bodyParts.push('You\'re looking to hire <strong>' + rolesList + '</strong>');
     }
 
-    // Hide progress bar on thank you
-    document.querySelector('.progress-bar-track').style.display = 'none';
+    if (hireCount && hireCount !== 'Just exploring for now') {
+      bodyParts.push('planning <strong>' + hireCount + '</strong> in the next 6 months');
+    }
+
+    if (timeline === 'ASAP — I needed someone yesterday' || timeline === 'Within the next 30 days') {
+      bodyParts.push('and you need them <strong>fast</strong>');
+    }
+
+    if (bodyParts.length > 0) {
+      document.getElementById('resultsBody').innerHTML =
+        bodyParts.join(', ') + '. <strong style="color:var(--dark);">Here\'s what Marco can do for you:</strong>';
+    }
+
+    // Build summary checklist
+    const summaryEl = document.getElementById('resultsSummary');
+    let checkItems = [];
+    checkItems.push('Pre-vetted candidates matched to your exact needs');
+    checkItems.push('Matched profiles delivered within 48 hours of your call');
+
+    if (revenue && revenue !== 'Under $500K' && revenue !== 'Prefer not to disclose') {
+      checkItems.push('Custom savings breakdown based on your ' + revenue + ' revenue stage');
+    } else {
+      checkItems.push('Custom savings breakdown for your business');
+    }
+
+    checkItems.push('Your free 2026 Global Salary Guide sent to your inbox');
+
+    let html = '<ul class="results-checklist">';
+    checkItems.forEach(item => {
+      html += '<li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>' + item + '</li>';
+    });
+    html += '</ul>';
+    summaryEl.innerHTML = html;
   }
 
   // ==================== ZAPIER WEBHOOK ====================
-  // This sends all quiz data to a Zapier Webhook trigger.
-  // In Zapier, build a 3-step Zap:
-  //
-  //   1. TRIGGER: "Webhooks by Zapier" → "Catch Hook"
-  //      - Zapier gives you a URL like: https://hooks.zapier.com/hooks/catch/XXXXX/YYYYY/
-  //      - Paste that URL below as ZAPIER_WEBHOOK_URL
-  //
-  //   2. ACTION 1: "Google Sheets" → "Create Spreadsheet Row"
-  //      - Connect your Google account
-  //      - Pick your tracking spreadsheet
-  //      - Map each field: firstName, lastName, email, role, bandwidth,
-  //        timeDrain, roles, hireCount, revenue, frustration, timeline,
-  //        website, leadType, submittedAt, utm_source, utm_medium, etc.
-  //
-  //   3. ACTION 2: "Attio" → "Create a Person" (or "Find or Create")
-  //      - Map: email → Email, firstName → First Name, lastName → Last Name
-  //      - Add website, role, leadType as custom attributes
-  //      - Then add a follow-up step: "Attio" → "Create a Task" or use
-  //        Attio's native automation to trigger an email sequence when
-  //        a new Person is created with a specific attribute (leadType)
-  //
-  // Alternatively, use Attio's built-in automations:
-  //   - In Attio → Automations → "When a person is created"
-  //   - Filter by leadType attribute
-  //   - Trigger email sequence for hot vs warm leads
-  //
   function sendToZapier(data, isWarm) {
-    if (!data.firstName || !data.lastName || !data.email) return;
-
     const payload = {
-      // Contact info
       firstName: data.firstName || '',
       lastName: data.lastName || '',
       email: data.email || '',
-      website: data.website || '',
-
-      // Quiz answers
       role: data.role || '',
-      bandwidth: data.bandwidth || '',
-      timeDrain: Array.isArray(data.timeDrain) ? data.timeDrain.join(', ') : (data.timeDrain || ''),
       roles: Array.isArray(data.roles) ? data.roles.join(', ') : (data.roles || ''),
       hireCount: data.hireCount || '',
       revenue: data.revenue || '',
-      frustration: Array.isArray(data.frustration) ? data.frustration.join(', ') : (data.frustration || ''),
       timeline: data.timeline || '',
-
-      // Lead classification
+      website: data.website || '',
       leadType: isWarm ? 'warm' : 'hot',
       submittedAt: data.submittedAt || new Date().toISOString(),
-
-      // UTM / ad tracking
       utm_source: data.utm_source || '',
       utm_medium: data.utm_medium || '',
       utm_campaign: data.utm_campaign || '',
@@ -1102,11 +1175,7 @@
       adset_id: data.adset_id || ''
     };
 
-    // ============================================================
-    // PASTE YOUR ZAPIER WEBHOOK URL HERE
-    // ============================================================
     const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/24219017/ujiu603/';
-    // e.g. 'https://hooks.zapier.com/hooks/catch/123456/abcdef/'
 
     if (ZAPIER_WEBHOOK_URL) {
       fetch(ZAPIER_WEBHOOK_URL, {
@@ -1117,33 +1186,11 @@
       }).catch(err => console.log('Zapier webhook error:', err));
     }
 
-    // Log to console for debugging
     console.log('Quiz submission:', JSON.stringify(payload, null, 2));
   }
 
-  // ==================== PARENT HEIGHT SYNC ====================
-  const quizContainer = document.querySelector('.quiz-container');
-  function postHeight() {
-    window.parent.postMessage({ type: 'resize', height: quizContainer.offsetHeight }, '*');
-  }
-  new ResizeObserver(postHeight).observe(quizContainer);
-
-  // ==================== BACK BUTTON ====================
-  document.querySelectorAll('.page').forEach(page => {
-    const num = parseInt(page.dataset.page, 10);
-    if (num === 1 || num === 11 || num === 12) return;
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'back-btn';
-    btn.setAttribute('aria-label', 'Go back');
-    btn.textContent = '←';
-    btn.addEventListener('click', () => showPage(currentPage - 1));
-    page.insertBefore(btn, page.firstChild);
-  });
-
   // ==================== INIT ====================
   updateProgress();
-  postHeight();
 
   // Allow Enter key on form inputs
   document.querySelectorAll('.form-input').forEach(input => {
