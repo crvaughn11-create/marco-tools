@@ -929,11 +929,15 @@
   utmFields.forEach(f => { if (urlParams.get(f)) answers[f] = urlParams.get(f); });
 
   // ==================== IFRAME HEIGHT ====================
-  // Simple approach: measure container, add buffer, poll every 500ms
+  // Trick: shrink body to 1px so scrollHeight reports true content height
+  // (bypasses iframe viewport clamping). Browser batches the style change
+  // so there's no visual flicker.
   var lastSentHeight = 0;
   function sendHeight() {
-    var container = document.querySelector('.quiz-container');
-    var h = container.offsetHeight + 100;
+    document.body.style.height = '1px';
+    var h = document.body.scrollHeight;
+    document.body.style.height = '';
+    h = h + 50;
     if (h !== lastSentHeight) {
       lastSentHeight = h;
       window.parent.postMessage({ type: 'quizHeight', height: h }, '*');
