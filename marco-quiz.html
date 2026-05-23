@@ -28,7 +28,6 @@
     font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--light-bg);
     color: var(--body);
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -930,7 +929,15 @@
   // ==================== IFRAME HEIGHT ====================
   function sendHeight() {
     requestAnimationFrame(function() {
-      const h = document.querySelector('.quiz-container').scrollHeight;
+      const activePage = document.querySelector('.page.active');
+      if (!activePage) return;
+      // Measure actual content: progress bar + card padding + active page content
+      const card = document.querySelector('.quiz-card');
+      const cardStyle = getComputedStyle(card);
+      const cardPadding = parseInt(cardStyle.paddingTop) + parseInt(cardStyle.paddingBottom);
+      const progressBar = document.querySelector('.progress-bar-track');
+      const progressH = progressBar ? progressBar.offsetHeight : 5;
+      const h = activePage.scrollHeight + cardPadding + progressH + 60; // 60px buffer
       window.parent.postMessage({ type: 'quizHeight', height: h }, '*');
     });
   }
