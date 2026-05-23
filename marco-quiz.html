@@ -33,7 +33,7 @@
   }
 
   .quiz-container {
-    width: 100%;
+    width: calc(100% - 20px);
     max-width: 620px;
     margin: 0 auto;
     padding: 20px 20px 40px;
@@ -611,17 +611,17 @@
 
   /* ========== RESPONSIVE ========== */
   @media (max-width: 640px) {
-    .quiz-container { padding: 12px 0 20px; margin: 0 10px; width: auto; }
-    .page { padding: 24px 20px 28px; }
+    .quiz-container { padding: 12px 10px 20px; }
+    .page { padding: 24px 10px 28px; }
     .page-title { font-size: 19px; }
     .option-item, .checkbox-item { padding: 12px 14px; font-size: 14px; }
     .stat-number { font-size: 36px; }
     .cal-embed-wrapper { min-height: 450px; }
-    .avatar-strip { flex-wrap: wrap; }
+    .avatar-strip { flex-wrap: wrap; margin-bottom: 20px; }
     .avatar-strip img { width: 38px; height: 38px; margin-left: -8px; border-width: 2px; }
     .avatar-strip img:first-child { margin-left: 0; }
     .avatar-strip .avatar-count { width: 38px; height: 38px; font-size: 10px; margin-left: -8px; border-width: 2px; }
-    .avatar-strip-label { font-size: 12px; margin-left: 10px; }
+    .avatar-strip-label { width: 100%; margin-left: 0; margin-top: 10px; font-size: 13px; }
     .candidate-cards { padding: 12px; }
   }
 </style>
@@ -932,11 +932,14 @@
   // ==================== IFRAME HEIGHT ====================
   var lastSentHeight = 0;
   function sendHeight() {
-    // Measure the quiz container's actual rendered size, not scrollHeight
-    // scrollHeight is unreliable inside iframes (clamped to iframe height)
+    // Use multiple measurement strategies, take the largest
     var container = document.querySelector('.quiz-container');
-    var rect = container.getBoundingClientRect();
-    var h = Math.ceil(rect.top + rect.height + 20); // 20px breathing room
+    var h = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight,
+      container.offsetHeight + container.offsetTop + 20
+    );
+    h = Math.ceil(h);
     if (h !== lastSentHeight) {
       lastSentHeight = h;
       window.parent.postMessage({ type: 'quizHeight', height: h }, '*');
@@ -945,6 +948,7 @@
   // ResizeObserver directly on the quiz container
   var quizContainer = document.querySelector('.quiz-container');
   new ResizeObserver(function() { sendHeight(); }).observe(quizContainer);
+  new ResizeObserver(function() { sendHeight(); }).observe(document.body);
   // MutationObserver for DOM changes (class toggles, display changes, etc.)
   new MutationObserver(function() { sendHeight(); }).observe(quizContainer, {
     childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style']
