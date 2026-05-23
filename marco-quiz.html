@@ -934,12 +934,12 @@
   function sendHeight() {
     // Use multiple measurement strategies, take the largest
     var container = document.querySelector('.quiz-container');
-    var h = Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight,
-      container.offsetHeight + container.offsetTop + 20
-    );
+    var docH = document.documentElement.scrollHeight;
+    var bodyH = document.body.scrollHeight;
+    var containerH = container.offsetHeight + container.offsetTop + 20;
+    var h = Math.max(docH, bodyH, containerH);
     h = Math.ceil(h);
+    console.log('[QuizHeight] doc:', docH, 'body:', bodyH, 'container:', containerH, '→ sending:', h);
     if (h !== lastSentHeight) {
       lastSentHeight = h;
       window.parent.postMessage({ type: 'quizHeight', height: h }, '*');
