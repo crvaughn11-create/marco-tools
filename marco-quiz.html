@@ -929,39 +929,17 @@
   utmFields.forEach(f => { if (urlParams.get(f)) answers[f] = urlParams.get(f); });
 
   // ==================== IFRAME HEIGHT ====================
+  // Simple approach: measure container, add buffer, poll every 500ms
   var lastSentHeight = 0;
   function sendHeight() {
-    // Find the true bottom of the active page content
     var container = document.querySelector('.quiz-container');
-    var activePage = document.querySelector('.page.active');
-    var h = 0;
-    if (activePage) {
-      // Walk all descendants and find the lowest bottom edge
-      var els = activePage.querySelectorAll('*');
-      var maxBottom = 0;
-      els.forEach(function(el) {
-        var r = el.getBoundingClientRect();
-        if (r.height > 0 && r.bottom > maxBottom) maxBottom = r.bottom;
-      });
-      // Add container bottom padding (40px) + breathing room
-      h = Math.ceil(maxBottom + 60);
-    }
-    // Also check scrollHeight as fallback
-    h = Math.max(h, document.documentElement.scrollHeight, document.body.scrollHeight);
+    var h = container.offsetHeight + 100;
     if (h !== lastSentHeight) {
       lastSentHeight = h;
       window.parent.postMessage({ type: 'quizHeight', height: h }, '*');
     }
   }
-  // ResizeObserver directly on the quiz container
-  var quizContainer = document.querySelector('.quiz-container');
-  new ResizeObserver(function() { sendHeight(); }).observe(quizContainer);
-  new ResizeObserver(function() { sendHeight(); }).observe(document.body);
-  // MutationObserver for DOM changes (class toggles, display changes, etc.)
-  new MutationObserver(function() { sendHeight(); }).observe(quizContainer, {
-    childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style']
-  });
-  window.addEventListener('resize', sendHeight);
+  setInterval(sendHeight, 500);
 
   // ==================== PROGRESS BAR ====================
   function updateProgress() {
