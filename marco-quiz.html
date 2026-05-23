@@ -611,7 +611,7 @@
 
   /* ========== RESPONSIVE ========== */
   @media (max-width: 640px) {
-    .quiz-container { padding: 12px 0 20px; }
+    .quiz-container { padding: 12px 0 20px; margin: 0 10px; }
     .page { padding: 24px 20px 28px; }
     .page-title { font-size: 19px; }
     .option-item, .checkbox-item { padding: 12px 14px; font-size: 14px; }
@@ -929,11 +929,20 @@
   utmFields.forEach(f => { if (urlParams.get(f)) answers[f] = urlParams.get(f); });
 
   // ==================== IFRAME HEIGHT ====================
+  var lastSentHeight = 0;
   function sendHeight() {
     var h = document.documentElement.scrollHeight;
-    window.parent.postMessage({ type: 'quizHeight', height: h }, '*');
+    if (h !== lastSentHeight) {
+      lastSentHeight = h;
+      window.parent.postMessage({ type: 'quizHeight', height: h }, '*');
+    }
   }
+  // ResizeObserver for body box changes
   new ResizeObserver(function() { sendHeight(); }).observe(document.body);
+  // MutationObserver for DOM changes (class toggles, display changes, etc.)
+  new MutationObserver(function() { sendHeight(); }).observe(document.body, {
+    childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style']
+  });
   window.addEventListener('resize', sendHeight);
 
   // ==================== PROGRESS BAR ====================
@@ -1010,6 +1019,8 @@
             btn.classList.add('hidden');
           }
         }
+        sendHeight();
+        setTimeout(sendHeight, 50);
       });
     });
   });
