@@ -932,14 +932,23 @@
   // ==================== IFRAME HEIGHT ====================
   var lastSentHeight = 0;
   function sendHeight() {
-    // Use multiple measurement strategies, take the largest
+    // Find the true bottom of the active page content
     var container = document.querySelector('.quiz-container');
-    var docH = document.documentElement.scrollHeight;
-    var bodyH = document.body.scrollHeight;
-    var containerH = container.offsetHeight + container.offsetTop + 20;
-    var h = Math.max(docH, bodyH, containerH);
-    h = Math.ceil(h);
-    console.log('[QuizHeight] doc:', docH, 'body:', bodyH, 'container:', containerH, '→ sending:', h);
+    var activePage = document.querySelector('.page.active');
+    var h = 0;
+    if (activePage) {
+      // Walk all descendants and find the lowest bottom edge
+      var els = activePage.querySelectorAll('*');
+      var maxBottom = 0;
+      els.forEach(function(el) {
+        var r = el.getBoundingClientRect();
+        if (r.height > 0 && r.bottom > maxBottom) maxBottom = r.bottom;
+      });
+      // Add container bottom padding (40px) + breathing room
+      h = Math.ceil(maxBottom + 60);
+    }
+    // Also check scrollHeight as fallback
+    h = Math.max(h, document.documentElement.scrollHeight, document.body.scrollHeight);
     if (h !== lastSentHeight) {
       lastSentHeight = h;
       window.parent.postMessage({ type: 'quizHeight', height: h }, '*');
