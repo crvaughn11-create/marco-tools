@@ -407,6 +407,21 @@
   .btn-primary.hidden { display: none; }
   .btn-primary svg { width: 18px; height: 18px; }
 
+  /* Sticky Next button for multi-select page */
+  .btn-sticky-wrap {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    padding: 12px 0 4px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 30%);
+    margin-top: 16px;
+  }
+  .btn-sticky-wrap.hidden { display: none; }
+  .btn-sticky-wrap .btn-primary {
+    margin-top: 0;
+    box-shadow: 0 -4px 16px rgba(35, 37, 53, 0.10);
+  }
+
   /* ========== FORM INPUTS ========== */
   .form-group { margin-bottom: 20px; }
   .form-label {
@@ -693,9 +708,11 @@
       <div style="font-size:13.5px; line-height:1.5; color:var(--body);">Popular first hires: <b style="color:var(--dark);">Marketing Specialists</b>, <b style="color:var(--dark);">Finance and Operations</b> — roles that free up founder time immediately.</div>
     </div>
 
-    <button class="btn-primary hidden" onclick="nextPage()">
-      Next <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-    </button>
+    <div class="btn-sticky-wrap hidden" id="stickyNextWrap">
+      <button class="btn-primary" onclick="nextPage()">
+        Next <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </button>
+    </div>
   </div>
 
   <!-- ==================== PAGE 3: HIRE COUNT ==================== -->
@@ -1011,8 +1028,15 @@
         item.classList.toggle('selected');
         const selected = list.querySelectorAll('.checkbox-item.selected');
         answers[question] = Array.from(selected).map(s => s.dataset.value);
-        const btn = item.closest('.page').querySelector('.btn-primary');
-        if (btn) {
+        const stickyWrap = item.closest('.page').querySelector('.btn-sticky-wrap');
+        const btn = item.closest('.page').querySelector('.btn-primary:not(.btn-sticky-wrap .btn-primary)');
+        if (stickyWrap) {
+          if (selected.length > 0) {
+            stickyWrap.classList.remove('hidden');
+          } else {
+            stickyWrap.classList.add('hidden');
+          }
+        } else if (btn) {
           if (selected.length > 0) {
             btn.classList.remove('hidden');
           } else {
